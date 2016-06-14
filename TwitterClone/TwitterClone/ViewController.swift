@@ -52,8 +52,8 @@ class ViewController: UIViewController
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath)
             let tweet = self.datasource[indexPath.row]
-            
             cell.textLabel?.text = tweet.text
+            cell.textLabel?.textColor = UIColor.blackColor()
             
             return cell
         }
