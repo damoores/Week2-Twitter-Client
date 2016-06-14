@@ -35,12 +35,3 @@ class JSONParser {
         return tweetJSONData
     }
 }
-//
-//JSONParser.tweetJSONFrom(JSONParser.JSONData()) { (success, tweets) in
-//    if success {
-//        for tweet in tweets! {
-//            print(tweet.text)
-//        }
-//    }
-//}
-//}
