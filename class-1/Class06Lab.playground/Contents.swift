@@ -3,6 +3,7 @@
 import UIKit
 
 let test = [0,1,2,3,4,5,6,7,8,9]
+var test2 = [Int]()
 
 func reverseArray<T> (input: [T]) -> [T] {
     var result = [T]()
@@ -22,3 +23,6 @@ func reverseArrayTwo<T> (input: [T]) -> [T] {
 }
 
 reverseArrayTwo(test)
+reverseArrayTwo(test2)
+reverseArray(test2)
+
