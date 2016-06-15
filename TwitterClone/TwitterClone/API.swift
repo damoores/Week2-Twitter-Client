@@ -15,7 +15,7 @@ class API {
     
     var account: ACAccount?
     
-    func login(completion: (account: [ACAccount]?) -> ()) {
+    func login(completion: (account: ACAccount?) -> ()) {
         let accountStore = ACAccountStore()
     
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -27,8 +27,8 @@ class API {
                 return
             }
             if granted{
-                if let accounts = accountStore.accountsWithAccountType(accountType) as? [ACAccount] {
-                    completion(account: accounts)
+                if let account = accountStore.accountsWithAccountType(accountType).first as? ACAccount {
+                    completion(account: account)
                     return
                 }
                 //No account found
