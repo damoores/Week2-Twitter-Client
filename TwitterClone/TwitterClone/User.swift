@@ -16,7 +16,7 @@ class User
     let location: String
     
     init?(json: [String: AnyObject]){
-        if let name = json["name"] as? String, profileImageUrl = json["profile_image_ur"] as? String, location = json["location"] as? String {
+        if let name = json["name"] as? String, profileImageUrl = json["profile_image_url"] as? String, location = json["location"] as? String {
             self.name = name
             self.profileImageUrl = profileImageUrl
             self.location = location

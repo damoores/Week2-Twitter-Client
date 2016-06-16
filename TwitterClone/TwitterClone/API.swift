@@ -14,6 +14,7 @@ class API {
     static let shared = API()
     
     var account: ACAccount?
+    var currentUser: User?
     
     func login(completion: (account: ACAccount?) -> ()) {
         let accountStore = ACAccountStore()
@@ -43,7 +44,7 @@ class API {
         }
     }
     
-    private func GETOAuthUsser(completion: (user: User?) ->()) {
+    func GETOAuthUsser(completion: (user: User?) ->()) {
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, URL: NSURL(string: "https://api.twitter.com/1.1/account/verify_credentials.json"), parameters: nil)
         
             request.account = self.account
