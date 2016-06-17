@@ -22,6 +22,12 @@ class ProfileViewController: UIViewController, Identity {
         blue: 0xa5/255,
         alpha: 1.0)
 
+    var cache: Cache<UIImage>? {
+        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate{
+            return delegate.cache
+        }
+        return nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

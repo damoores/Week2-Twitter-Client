@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, Identity
+class ViewController: UIViewController, UITableViewDelegate, Identity
 {
         
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +18,13 @@ class ViewController: UIViewController, Identity
         green: 0xf0/255,
         blue: 0xa5/255,
         alpha: 1.0)
+    
+    var cache: Cache<UIImage>? {
+        if let delegate = UIApplication.sharedApplication().delegate as? AppDelegate{
+            return delegate.cache
+        }
+        return nil
+    }
 
     var datasource = [Tweet]() {
         didSet {
@@ -27,6 +34,8 @@ class ViewController: UIViewController, Identity
     func setupTableview() {
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.registerNib(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "tweetCell")
+        self.tableView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -58,13 +67,19 @@ class ViewController: UIViewController, Identity
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == DetailViewController.id() {
-            guard let DetailViewController = segue.destinationViewController as? DetailViewController else {
+            guard let detailViewController = segue.destinationViewController as? DetailViewController else {
                 return }
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
-            DetailViewController.tweet = self.datasource[indexPath.row]
+            detailViewController.tweet = self.datasource[indexPath.row]
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        self.performSegueWithIdentifier(DetailViewController.id(), sender: nil)
+    }    
 }
+
 
 extension ViewController: UITableViewDataSource
     {
@@ -73,10 +88,10 @@ extension ViewController: UITableViewDataSource
         }
         
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath) as! TweetCell
             let tweet = self.datasource[indexPath.row]
-            cell.textLabel?.text = tweet.text
             cell.backgroundColor = appColor
+            cell.tweet = tweet
             return cell
         }
 }

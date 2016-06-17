@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -41,13 +42,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="RaW-UN-KL4" kind="show" identifier="DetailViewController" id="EP9-FQ-Q0L"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="ebi-bd-xhE"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HJW-Dc-V9e"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -74,6 +73,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Xrr-hz-mGr" id="qUZ-a5-CZk"/>
+                        <segue destination="RaW-UN-KL4" kind="show" identifier="DetailViewController" id="sf7-QJ-Q26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,17 +165,39 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XzR-7l-5Pj">
+                                <rect key="frame" x="225" y="99" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="ebQ-gH-oIM"/>
+                                    <constraint firstAttribute="height" constant="150" id="hrL-M1-Yr0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpl-FG-mnq">
+                                <rect key="frame" x="225" y="99" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="FIT-VJ-Fb8"/>
+                                    <constraint firstAttribute="height" constant="150" id="IzW-iJ-Nwk"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="9fK-ll-XSL" kind="show" identifier="UserTimelineViewController" id="aeb-r5-YyD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3tf-xb-gcm" secondAttribute="trailing" constant="8" id="K0O-sj-4EU"/>
+                            <constraint firstItem="Bpl-FG-mnq" firstAttribute="centerX" secondItem="Ziw-EG-XN4" secondAttribute="centerX" id="ToS-5c-mxy"/>
+                            <constraint firstItem="3tf-xb-gcm" firstAttribute="top" secondItem="Bpl-FG-mnq" secondAttribute="bottom" constant="8" id="Yzh-Hu-B2v"/>
                             <constraint firstItem="DqB-u3-odU" firstAttribute="centerX" secondItem="3tf-xb-gcm" secondAttribute="centerX" id="lxr-5w-ww2"/>
                             <constraint firstItem="3tf-xb-gcm" firstAttribute="centerY" secondItem="Ziw-EG-XN4" secondAttribute="centerY" id="nmn-Nk-DoJ"/>
+                            <constraint firstItem="XzR-7l-5Pj" firstAttribute="centerX" secondItem="Ziw-EG-XN4" secondAttribute="centerX" id="pRs-LG-Roq"/>
                             <constraint firstItem="3tf-xb-gcm" firstAttribute="leading" secondItem="Ziw-EG-XN4" secondAttribute="leading" constant="8" id="plh-cu-rb6"/>
                             <constraint firstItem="DqB-u3-odU" firstAttribute="top" secondItem="3tf-xb-gcm" secondAttribute="bottom" constant="20" id="qKi-sB-fpz"/>
+                            <constraint firstItem="3tf-xb-gcm" firstAttribute="top" secondItem="XzR-7l-5Pj" secondAttribute="bottom" constant="8" id="tFu-wY-cvP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="profileImageView" destination="XzR-7l-5Pj" id="yd3-88-FDR"/>
                         <outlet property="tweetLabel" destination="3tf-xb-gcm" id="adp-kK-QN8"/>
                         <outlet property="userLabel" destination="DqB-u3-odU" id="m6b-ML-E57"/>
                     </connections>
@@ -183,6 +205,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW9-v6-yaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1822" y="207"/>
+        </scene>
+        <!--User Timeline View Controller-->
+        <scene sceneID="YAS-UH-kgK">
+            <objects>
+                <viewController storyboardIdentifier="userTimelineViewController" id="9fK-ll-XSL" customClass="UserTimelineViewController" customModule="TwitterClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T2m-cg-8h6"/>
+                        <viewControllerLayoutGuide type="bottom" id="zM3-4S-FEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a0o-c3-IsE">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g0q-6w-BSE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" id="vn4-7q-u1q" customClass="TweetCell" customModule="TwitterClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vn4-7q-u1q" id="Jbr-zm-e8N">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9fK-ll-XSL" id="bHw-2d-n1u"/>
+                                    <outlet property="delegate" destination="9fK-ll-XSL" id="nfP-41-SvA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="g0q-6w-BSE" secondAttribute="trailing" constant="-20" id="10Y-1f-twu"/>
+                            <constraint firstItem="zM3-4S-FEz" firstAttribute="top" secondItem="g0q-6w-BSE" secondAttribute="bottom" id="QCc-iw-z9X"/>
+                            <constraint firstItem="g0q-6w-BSE" firstAttribute="leading" secondItem="a0o-c3-IsE" secondAttribute="leadingMargin" constant="-20" id="loG-eR-0SN"/>
+                            <constraint firstItem="g0q-6w-BSE" firstAttribute="top" secondItem="T2m-cg-8h6" secondAttribute="bottom" id="xVk-Tx-c5n"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="g0q-6w-BSE" id="nGt-bW-Ci2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kho-Mb-V74" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2455" y="207"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Xs-1q-Hmn">

@@ -80,8 +80,8 @@ class API {
         }
     }
     
-    private func updateTimeline(completion: (tweets: [Tweet]?) -> ()) {
-        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, URL: NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json"), parameters: nil)
+    private func updateTimeline(url: String, completion: (tweets: [Tweet]?) -> ()) {
+        let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, URL: NSURL(string: url), parameters: nil)
         
             request.account = self.account
         
@@ -113,18 +113,40 @@ class API {
             
         }
     }
+    
+    
     func getTweets(completion: (tweets: [Tweet]?) -> ()) {
         if let _ = self.account{
-            self.updateTimeline(completion)
+            self.updateTimeline("https://api.twitter.com/1.1/statuses/home_timeline.json", completion: completion)
         } else {
             self.login( {(account) in 
                 if let account = account{
                     API.shared.account = account
-                    self.updateTimeline(completion)
+                    self.updateTimeline("https://api.twitter.com/1.1/statuses/home_timeline.json", completion: completion)
                 } else {
                     print("Account is nil")
                 }
             })
         }
     }
+    
+    func getUserTweets(userName: String, completion: (tweets: [Tweet]?) ->()) {
+        self.updateTimeline("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(userName)", completion: completion)
+    }
+    
+    func getImage(urlString: String, completion: (image: UIImage) -> ()) {
+        
+        NSOperationQueue().addOperationWithBlock {
+            guard let url = NSURL(string: urlString) else { return }
+            guard let data = NSData(contentsOfURL: url) else { return }
+            guard let image = UIImage(data: data) else { return }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                completion(image: image)
+            })
+        }
+    }
 }
+
+
+

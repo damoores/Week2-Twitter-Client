@@ -20,6 +20,10 @@
 		704E90741D11FE2F0031DE78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E90731D11FE2F0031DE78 /* DetailViewController.swift */; };
 		704E90761D1202230031DE78 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E90751D1202230031DE78 /* Identity.swift */; };
 		704E90781D122B600031DE78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E90771D122B600031DE78 /* ProfileViewController.swift */; };
+		704E909A1D134E0C0031DE78 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E90991D134E0C0031DE78 /* Cache.swift */; };
+		704E909C1D1354870031DE78 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704E909B1D1354870031DE78 /* TweetCell.xib */; };
+		704E909E1D135A7F0031DE78 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E909D1D135A7F0031DE78 /* TweetCell.swift */; };
+		704E90A01D137B0C0031DE78 /* UserTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E909F1D137B0C0031DE78 /* UserTimelineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		704E90731D11FE2F0031DE78 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		704E90751D1202230031DE78 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		704E90771D122B600031DE78 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		704E90991D134E0C0031DE78 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		704E909B1D1354870031DE78 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
+		704E909D1D135A7F0031DE78 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		704E909F1D137B0C0031DE78 /* UserTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,8 @@
 				704E90341D0F4B6B0031DE78 /* ViewController.swift */,
 				704E90731D11FE2F0031DE78 /* DetailViewController.swift */,
 				704E90771D122B600031DE78 /* ProfileViewController.swift */,
+				704E909D1D135A7F0031DE78 /* TweetCell.swift */,
+				704E909F1D137B0C0031DE78 /* UserTimelineViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -106,6 +116,7 @@
 				704E90361D0F4B6B0031DE78 /* Main.storyboard */,
 				704E90391D0F4B6B0031DE78 /* Assets.xcassets */,
 				704E903B1D0F4B6B0031DE78 /* LaunchScreen.storyboard */,
+				704E909B1D1354870031DE78 /* TweetCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -124,6 +135,7 @@
 			children = (
 				704E904E1D0F51A00031DE78 /* JSONParser.swift */,
 				704E90531D10A4B30031DE78 /* API.swift */,
+				704E90991D134E0C0031DE78 /* Cache.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -187,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				704E903D1D0F4B6B0031DE78 /* LaunchScreen.storyboard in Resources */,
+				704E909C1D1354870031DE78 /* TweetCell.xib in Resources */,
 				704E903A1D0F4B6B0031DE78 /* Assets.xcassets in Resources */,
 				704E90381D0F4B6B0031DE78 /* Main.storyboard in Resources */,
 				704E90451D0F4CA30031DE78 /* tweet.json in Resources */,
@@ -200,12 +213,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704E90A01D137B0C0031DE78 /* UserTimelineViewController.swift in Sources */,
 				704E904D1D0F4E2D0031DE78 /* User.swift in Sources */,
 				704E904F1D0F51A00031DE78 /* JSONParser.swift in Sources */,
 				704E904B1D0F4E200031DE78 /* Tweet.swift in Sources */,
 				704E90761D1202230031DE78 /* Identity.swift in Sources */,
+				704E909E1D135A7F0031DE78 /* TweetCell.swift in Sources */,
 				704E90351D0F4B6B0031DE78 /* ViewController.swift in Sources */,
 				704E90541D10A4B30031DE78 /* API.swift in Sources */,
+				704E909A1D134E0C0031DE78 /* Cache.swift in Sources */,
 				704E90781D122B600031DE78 /* ProfileViewController.swift in Sources */,
 				704E90331D0F4B6B0031DE78 /* AppDelegate.swift in Sources */,
 				704E90741D11FE2F0031DE78 /* DetailViewController.swift in Sources */,
